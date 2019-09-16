@@ -105,7 +105,7 @@ extension NavigatorType {
         viewController.hidesBottomBarWhenPushed = hidesValue
     }
     #endif
-    return self.pushViewController(viewController, from: from, animated: animated)
+    return self.pushViewController(viewController, from: from, animated: animated, completion: completion)
   }
   
   @discardableResult
