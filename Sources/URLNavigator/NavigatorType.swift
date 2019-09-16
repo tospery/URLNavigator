@@ -90,8 +90,7 @@ extension NavigatorType {
   @discardableResult
   public func pushURL(_ url: URLConvertible, context: Any? = nil, from: UINavigationControllerType? = nil, animated: Bool = true, completion: (() -> Void)? = nil) -> UIViewController? {
     guard let viewController = self.viewController(for: url, context: context) else { return nil }
-    #if TARGET_OS_IOS
-    {
+    if #available(iOS 2.0, *) {
         var hidesValue = true
         if let hidesParam = url.queryParameters["hidesBottomBarWhenPushed"] {
             let hidesLower = hidesParam.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
@@ -104,7 +103,6 @@ extension NavigatorType {
         }
         viewController.hidesBottomBarWhenPushed = hidesValue
     }
-    #endif
     return self.pushViewController(viewController, from: from, animated: animated, completion: completion)
   }
   
