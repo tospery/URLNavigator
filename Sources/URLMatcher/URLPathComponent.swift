@@ -5,7 +5,7 @@ enum URLPathComponent {
 
 extension URLPathComponent {
   init(_ value: String) {
-    if value.hasPrefix("<") && value.hasSuffix(">") {
+    if value.hasPrefix("[") && value.hasSuffix("]") {
       let start = value.index(after: value.startIndex)
       let end = value.index(before: value.endIndex)
       let placeholder = value[start..<end] // e.g. "<int:id>" -> "int:id"
